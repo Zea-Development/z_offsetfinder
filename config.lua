@@ -19,7 +19,7 @@ cfg.binds = {
 
 ------------- # ------------- # ------------- # ------------- # ------------- # ------------- # ------------- # -------------
 
-cfg.command = 'zhoseConfig' -- Command to toggle the offset finder
+cfg.command = 'offsetFinder' -- Command to toggle the offset finder
 
 cfg.vehicleOpacity = 8 -- Opacity of the vehicle when the offset finder is active
 

@@ -1,20 +1,37 @@
+---@type fx_information
+
 fx_version 'cerulean'
-games { 'gta5' }
-author 'Harv'
+game 'gta5'
+lua54 'yes'
 
-shared_scripts {
-	'cfg_offsetfinder.lua',
-}
+---@type resource_information
 
-client_scripts {
-    'cl_offsetfinder.lua',
-    'keybinds.lua',
+name 'z_offsetfinder'
+author 'Zea Development - https://discord.gg/zHvPyJzhQU'
+url 'https://zeadevelopment.com/'
+version 'v1.0.0'
 
-}
+---@type shared_script
 
-ui_page 'html/index.html'
+shared_script ({
+    'config.lua',
+})
 
-files {
-    'html/index.html',
-    'html/script.js'
-}
+---@type client_script
+
+client_script ({
+    'core/cl-main.lua',
+    'core/classes/*.lua'
+})
+
+---@type ui_page
+
+ui_page 'web/index.html'
+
+---@type files
+
+files ({ 
+    'web/*.html',
+    'web/*.css',
+    'web/*.js'
+})
