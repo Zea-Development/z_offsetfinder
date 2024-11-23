@@ -136,6 +136,8 @@ RegisterCommand(cfg.command, function(_, args)
             end
             FreezeEntityPosition(playerPed, false)
         end)
+    else
+        showHelpNotification("~r~You need to be in a vehicle to use this command.")
     end
 end)
 
