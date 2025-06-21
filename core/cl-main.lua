@@ -53,7 +53,7 @@ RegisterCommand(cfg.command, function(_, args)
             configVehicle = nil
         end
         FreezeEntityPosition(playerPed, false)
-        speed = defaultSpeed -- Reset speed to default when command is deactivated
+        speed = defaultSpeed
         return
     end
 
@@ -62,7 +62,7 @@ RegisterCommand(cfg.command, function(_, args)
     if vehicle and vehicle ~= 0 then
         configVehicle = vehicle
         SetEntityAlpha(configVehicle, cfg.vehicleOpacity * 10, false)
-        SetVehicleForwardSpeed(configVehicle, 0) -- Set vehicle speed to 0
+        SetVehicleForwardSpeed(configVehicle, 0)
 
         FreezeEntityPosition(playerPed, true)
 
@@ -77,19 +77,19 @@ RegisterCommand(cfg.command, function(_, args)
                 showHelpNotification("Use ~INPUT_SCRIPTED_FLY_ZUP~ and ~INPUT_SCRIPTED_FLY_ZDOWN~.\nCurrent Speed: " ..
                                          speed)
 
-                if IsControlPressed(0, keybinds[cfg.binds['forward_bind']]) then -- Arrow Up
+                if IsControlPressed(0, keybinds[cfg.binds['forward_bind']]) then
                     offset = updateOffset(offset, "FORWARD", speed, configVehicle)
-                elseif IsControlPressed(0, keybinds[cfg.binds['backward_bind']]) then -- Arrow Down
+                elseif IsControlPressed(0, keybinds[cfg.binds['backward_bind']]) then
                     offset = updateOffset(offset, "BACKWARD", speed, configVehicle)
-                elseif IsControlPressed(0, keybinds[cfg.binds['left_bind']]) then -- Arrow Left
+                elseif IsControlPressed(0, keybinds[cfg.binds['left_bind']]) then
                     offset = updateOffset(offset, "LEFT", speed, configVehicle)
-                elseif IsControlPressed(0, keybinds[cfg.binds['right_bind']]) then -- Arrow Right
+                elseif IsControlPressed(0, keybinds[cfg.binds['right_bind']]) then
                     offset = updateOffset(offset, "RIGHT", speed, configVehicle)
-                elseif IsControlPressed(0, keybinds[cfg.binds['up_bind']]) then -- Left Shift
+                elseif IsControlPressed(0, keybinds[cfg.binds['up_bind']]) then
                     offset = updateOffset(offset, "UP", speed, configVehicle)
-                elseif IsControlPressed(0, keybinds[cfg.binds['down_bind']]) then -- Left Control
+                elseif IsControlPressed(0, keybinds[cfg.binds['down_bind']]) then
                     offset = updateOffset(offset, "DOWN", speed, configVehicle)
-                elseif IsControlJustPressed(0, keybinds[cfg.binds['reset_bind']]) then -- R key
+                elseif IsControlJustPressed(0, keybinds[cfg.binds['reset_bind']]) then
                     offset = vector3(0.0, 0.0, 0.0)
                 elseif IsControlJustPressed(0, keybinds[cfg.binds['save_bind']]) then
                     showNotification("~g~Offset copied to clipboard")
@@ -99,33 +99,32 @@ RegisterCommand(cfg.command, function(_, args)
                         type = "clipboard",
                         data = coords
                     })
-                elseif IsControlJustPressed(0, 10) then -- Page Up
+                elseif IsControlJustPressed(0, 10) then
                     if IsControlPressed(0, 19) then
-                        speed = speed + 0.002 -- Double the increment if Left Alt is held
+                        speed = speed + 0.002
                     else
-                        speed = speed + 0.001 -- Regular increment
+                        speed = speed + 0.001
                     end
-                elseif IsControlJustPressed(0, 11) then -- Page Down
+                elseif IsControlJustPressed(0, 11) then
                     if IsControlPressed(0, 19) then
-                        speed = speed - 0.002 -- Double the decrement if Left Alt is held
+                        speed = speed - 0.002
                     else
-                        speed = speed - 0.001 -- Regular decrement
+                        speed = speed - 0.001
                     end
                     if speed < 0.001 then
                         speed = 0.001
                     end
                 end
 
-                -- Disable all controls except the ones used for offset adjustment
-                DisableControlAction(0, 32, true) -- MoveUpDown
-                DisableControlAction(0, 34, true) -- MoveLeftRight
-                DisableControlAction(0, 31, true) -- MoveUpDown
-                DisableControlAction(0, 30, true) -- MoveLeftRight
-                DisableControlAction(0, 59, true) -- Disable steering in vehicle
-                DisableControlAction(0, 71, true) -- Disable driving forward in vehicle
-                DisableControlAction(0, 72, true) -- Disable reversing in vehicle
-                DisableControlAction(0, 75, true) -- Disable exiting vehicle
-                DisableControlAction(0, 80, true) -- Disable Cinematic Cam
+                DisableControlAction(0, 32, true)
+                DisableControlAction(0, 34, true)
+                DisableControlAction(0, 31, true)
+                DisableControlAction(0, 30, true)
+                DisableControlAction(0, 59, true)
+                DisableControlAction(0, 71, true)
+                DisableControlAction(0, 72, true)
+                DisableControlAction(0, 75, true)
+                DisableControlAction(0, 80, true)
 
                 Citizen.Wait(0)
             end
