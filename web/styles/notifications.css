@@ -1,0 +1,277 @@
+#notification {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: fixed;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    max-width: 500px;
+    background-color: var(--bg-primary);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    transition: top 0.5s ease;
+    z-index: 1000;
+    border: 1px solid var(--border);
+}
+
+#notification.show {
+    top: 20px;
+}
+
+#notification h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#notification.show.emergency {
+    animation: redGlow 1.5s infinite;
+    border: 1px solid rgba(255, 0, 0, 0.6);
+}
+
+#notification.emergency #incident-title {
+    color: #ff5555;
+}
+
+#notification.emergency .timer {
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+.timer {
+    background-color: var(--bg-secondary);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+#notification p {
+    background-color: var(--bg-secondary);
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.notification-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.notification.toast {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+    width: 350px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease, top 0.3s ease;
+}
+
+.notification.toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.notification.toast.hidden {
+    opacity: 0;
+    transform: translateX(100%);
+    pointer-events: none;
+}
+
+.progress-circle-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 16px;
+}
+
+.progress-circle {
+    position: relative;
+    width: var(--circle-size, 50px);
+    height: var(--circle-size, 50px);
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.progress-icon {
+    position: absolute;
+    font-size: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--circle-size);
+    height: var(--circle-size);
+}
+
+.circle .background-circle {
+    fill: none;
+    stroke: rgba(0, 0, 0, 0.3);
+    stroke-width: 6;
+}
+
+.circle .foreground-circle {
+    fill: none;
+    stroke: white;
+    stroke-width: 4;
+    stroke-dasharray: var(--circle-dasharray);
+    stroke-dashoffset: var(--circle-dasharray);
+    transition: stroke-dashoffset 5s linear;
+}
+
+.notification.toast.success .foreground-circle {
+    stroke: var(--success-color);
+}
+
+.notification.toast.error .foreground-circle {
+    stroke: var(--error-color);
+}
+
+.notification.toast.info .foreground-circle {
+    stroke: var(--info-color);
+}
+
+.notification.toast.warning .foreground-circle {
+    stroke: var(--warning-color);
+}
+
+.notification.toast.success .progress-circle {
+    background-color: rgba(76, 175, 80, 0.5);
+}
+
+.notification.toast.error .progress-circle {
+    background-color: rgba(244, 67, 54, 0.5);
+}
+
+.notification.toast.info .progress-circle {
+    background-color: rgba(33, 150, 243, 0.5);
+}
+
+.notification.toast.warning .progress-circle {
+    background-color: rgba(255, 152, 0, 0.5);
+}
+
+.notification-message {
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+.notification-message strong {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.watermark-notif {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 10px;
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.notification-timestamp {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 10px;
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.refresh-settings {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--bg-secondary);
+    border-radius: 6px;
+    padding: 4px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: var(--transition);
+    height: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.refresh-settings:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.refresh-settings label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.refresh-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3px;
+}
+
+.refresh-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.refresh-status {
+    margin-left: 2px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    padding: 2px 5px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.refresh-settings input[type='checkbox'] {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.refresh-progress-container {
+    width: 40px;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.refresh-progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: var(--primary-color);
+    transition: width linear;
+}
+
+.refresh-settings.disabled .refresh-progress-container {
+    opacity: 0.5;
+}
+
+.refresh-settings.disabled .refresh-progress-bar {
+    background-color: var(--text-muted);
+}
+.refresh-status.text-success {
+    color: var(--primary-color);
+}
+.clickable {
+    cursor: pointer;
+}
