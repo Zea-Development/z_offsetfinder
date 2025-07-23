@@ -1,37 +1,36 @@
----@type fx_information
+---@section fx_information
 
-fx_version 'cerulean'
-game 'gta5'
-lua54 'yes'
+fx_version("cerulean")
+game("gta5")
+lua54("yes")
+use_experimental_fxv2_oal("yes")
 
----@type resource_information
+---@section resource_information
 
-name 'z_offsetfinder'
-author 'Zea Development - https://discord.gg/zHvPyJzhQU'
-url 'https://zeadevelopment.com/'
-version 'v1.0.0'
+name("z_offsetfinder")
+author("Zea Development - https://discord.gg/zHvPyJzhQU")
+url("https://zeadevelopment.com/")
+version("22c7250")
 
----@type shared_script
+---@section shared_script
 
-shared_script ({
-    'config.lua',
+shared_script({
+    "config.lua",
 })
 
----@type client_script
+---@section client_script
 
-client_script ({
-    'core/cl-main.lua',
-    'core/classes/*.lua'
+client_script({
+    "core/main.lua",
+    "core/classes/*.lua",
 })
 
----@type ui_page
+---@section ui_page
 
-ui_page 'web/index.html'
+ui_page("web/index.html")
 
----@type files
+---@section files
 
-files ({ 
-    'web/*.html',
-    'web/*.css',
-    'web/*.js'
+files({
+    "web/**",
 })
