@@ -1,28 +1,20 @@
--- @param: Please refer to our resource documentation for assistance with configuring this resource: docs.zeadevelopment.com.
+---@documentation: Please refer to our resource documentation for assistance with configuring this resource: docs.zeadevelopment.com.
+
 ------------- # ------------- # ------------- # ------------- # ------------- # ------------- # ------------- # -------------
----@class cfg : Configuration
-cfg = {}
 
----@field keybinds table
----@description: Allow for the customization of keybinds utilized by the resource.
+---@class cfg
+cfg = cfg or {}
 
-cfg.binds = {
-    ['forward_bind'] = 'ARROW_UP',
-    ['backward_bind'] = 'ARROW_DOWN',
-    ['left_bind'] = 'ARROW_LEFT',
-    ['right_bind'] = 'ARROW_RIGHT',
-    ['up_bind'] = 'LEFT_SHIFT',
-    ['down_bind'] = 'LEFT_CTRL',
-    ['reset_bind'] = 'R',
-    ['save_bind'] = 'ENTER'
+---@section Keybinds
+cfg.Keybinds = {
+    forward = "W",
+    backward = "S",
+    left = "A",
+    right = "D",
+
+    up = "LEFT_SHIFT",
+    down = "LEFT_CTRL",
+
+    reset = "R",
+    save = "ENTER"
 }
-
-------------- # ------------- # ------------- # ------------- # ------------- # ------------- # ------------- # -------------
-
-cfg.command = 'offsetFinder' -- Command to toggle the offset finder
-
-cfg.vehicleOpacity = 8 -- Opacity of the vehicle when the offset finder is active
-
-------------- # ------------- # ------------- # ------------- # ------------- # ------------- # ------------- # -------------
-
-return cfg
